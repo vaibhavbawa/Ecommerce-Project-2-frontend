@@ -14,6 +14,7 @@ import { AdminProductComponent } from './module/admin/components/admin-product/a
 import { OrdersTableComponent } from './module/admin/components/orders-table/orders-table.component';
 import { CustomersComponent } from './module/admin/components/customers/customers.component';
 import { CreateProductsComponent } from './module/admin/components/create-products/create-products.component';
+import { NavContentComponent } from './module/shared/component/navbar/nav-content/nav-content.component';
 
 
 export const routes: Routes = [

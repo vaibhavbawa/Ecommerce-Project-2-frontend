@@ -11,6 +11,7 @@ import {MatIconModule} from '@angular/material/icon';
 })
 export class CartItemComponent {
 
+  @Input() cartItem:any;
   @Input() showButton:any;
 
   updateCartItem(num:number){

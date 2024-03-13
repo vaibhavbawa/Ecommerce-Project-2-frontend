@@ -2,17 +2,17 @@
     <div class="flex items-center">
         <div class="w-[5rem] h-[5rem] lg:w-[9rem] lg:h-[9rem]">
             <img class="w-full h-full object-cover object-top"
-                src="https://rukminim1.flixcart.com/image/612/612/xif0q/kurta/u/g/z/xl-8button-kurta-elepants-original-imagk57kfg2bwvhd.jpeg?q=70"
+                [src]="cartItem.product.imageUrl"
                 alt="">
         </div>
         <div class="ml-5 space-y-1">
-            <p class="font-semibold">Men Solid Cotton Blend Straight Kurta</p>
-            <p class="text-gray-500">Size :M, Black</p>
-            <p class="text-gray-500 mt-2">Seller : KSH Trendz</p>
+            <p class="font-semibold">{{cartItem.product.title}}</p>
+            <p class="text-gray-500">Size :{{cartItem.size}}, Black</p>
+            <p class="text-gray-500 mt-2">Seller : {{cartItem.brand}}</p>
             <div class="flex space-x-2 items-center pt-3">
-                <p class="text-gray-500 line-through">₹1499</p>
-                <p class="font-semibold">₹265</p>
-                <p class="text-green-600 font-semibold">82% off</p>
+                <p class="text-gray-500 line-through">₹{{cartItem.product.price}}</p>
+                <p class="font-semibold">₹{{cartItem.product.discountedPrice}}</p>
+                <p class="text-green-600 font-semibold">{{cartItem.product.discountedPersent}}% off</p>
             </div>
         </div>
     </div>

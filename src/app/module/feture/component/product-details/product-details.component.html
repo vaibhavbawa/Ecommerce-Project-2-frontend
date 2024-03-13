@@ -2,20 +2,20 @@
     <p>Product/clothes/women/saree</p>
     <section class="lg:grid grid-cols-3 lg:gap-10">
         <div class="col-span-2 flex items-center flex-col">
-            <img src="https://rukminim1.flixcart.com/image/612/612/xif0q/kurta/x/f/6/xxl-new-white-nofilter-original-imaghzggudfezpr8.jpeg?q=70"
+            <img [src]="products.imageUrl"
                 alt="">
         </div>
         <div class="col-span-1 space-y-10 mt-10 lg:mt-0">
             <div class="space-y-2">
                 <p class="font-semibold text-gray-600 text-lg">
-                    Nofilter
+                    {{products.brand}}
                 </p>
-                <p class="text-xl">Men Solid Pure Cotton Straight Kurta</p>
+                <p class="text-xl">{{products.title}}</p>
             </div>
             <div class="flex items-center space-x-5">
-                <p class="text-lg">₹393</p>
-                <p class="text-lg text-gray-700 line-through">₹2999</p>
-                <p class="text-green-400 font-semibold text-lg">80%</p>
+                <p class="text-lg">₹{{products.discountedPrice}}</p>
+                <p class="text-lg text-gray-700 line-through">₹{{products.price}}</p>
+                <p class="text-green-400 font-semibold text-lg">{{products.discountedPersent}}%</p>
             </div>
             <div class="">
                 <p class="text-lg font-semibold">Size</p>
@@ -41,9 +41,7 @@
                 </button>
             </div>
             <div>
-                <p class="text-gray-600">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Possimus consequatur ex, doloremque labore
-                    qui est accusamus! Nobis commodi quas eos id tempora voluptas. Debitis velit quod illum ratione
-                    cupiditate explicabo ad minima temporibus fugiat excepturi.</p>
+                <p class="text-gray-600">{{products.description}}</p>
                 <p class="text-gray-600">Indulge in the timeless beauty of lengha cholis for women and make a lasting
                     impression with our exquisite designs. Experience the epitome of epitome of elegance and celebrate
                     your femininity with our stunning collection.</p>

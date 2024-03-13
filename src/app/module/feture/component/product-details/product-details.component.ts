@@ -8,7 +8,11 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
 import { ProductCardComponent } from '../../../shared/component/product-card/product-card.component';
 import { womenGouns } from '../../../../../Data/Gouns/gouns';
 import { StartRatingComponent } from '../../../shared/component/start-rating/start-rating.component';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ProductService } from '../../../../state/Product/product.service';
+import { Store, select } from '@ngrx/store';
+import { AppState } from '../../../../models/AppState';
+import { CartService } from '../../../../state/Cart/cart.service';
 @Component({
   selector: 'app-product-details',
   standalone: true,
@@ -23,6 +27,7 @@ import { Router } from '@angular/router';
     ProductCardComponent,
     StartRatingComponent
   ],
+  providers:[ProductService,CartService],
   templateUrl: './product-details.component.html',
   styleUrl: './product-details.component.scss'
 })
@@ -30,15 +35,40 @@ export class ProductDetailsComponent {
   selectedSize:any;
   reviews=[1,1,1];
   reletedProducts:any;
+  products:any;
+  productId:any;
   @Input() product:any
 
-  constructor(private router:Router){}
+  constructor(
+    private router:Router, 
+    private productService:ProductService,
+    private activatedRoute:ActivatedRoute,
+    private store:Store<AppState>,
+    private cartService:CartService
+    ){}
   ngOnInit(){
     this.reletedProducts=womenGouns;
+   const id = this.activatedRoute.snapshot.paramMap.get("id");
+
+   this.productService.findProductById(id);
+    this.productId=id;
+   this.store.pipe(select(store=>store.product)).subscribe((product)=>{
+    this.products=product.products
+    console.log("Store data ",product.products)
+  })
+}
+
+handleAddToCart(){
+  console.log("selected size",this.selectedSize);
+  const data={size:this.selectedSize,productId:this.productId}
+  this.cartService.addItemToCart(data);
+  this.cartService.getCart()
+  this.router.navigate(['cart']);
+
+
+}
+
   }
 
-  handleAddToCart(){
-    console.log("selected size",this.selectedSize);
-    this.router.navigate(['cart']);
-  }
-}
+ 
+

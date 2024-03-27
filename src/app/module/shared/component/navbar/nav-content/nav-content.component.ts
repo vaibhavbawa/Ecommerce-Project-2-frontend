@@ -22,7 +22,8 @@ export class NavContentComponent {
 
   ngOnInit(){
     this.category=navigation;
-    console.log("Selected Section", this.selectedSection)
+    console.log("Selected Section", this.selectedSection);
+    console.log("category", this.category)
   }
 
   constructor(private router:Router){}

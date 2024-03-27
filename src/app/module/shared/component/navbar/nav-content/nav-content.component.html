@@ -5,15 +5,15 @@
                 <h1 class="text center">{{item.name}}</h1>
                 <button (click)="handleNavigate('/' +selectedSection + '/' + item.id + '/'+ section.id)" mat-button *ngFor="let section of item.items">{{section.name}}</button>
             </div>
-            <div class="hidden lg:block">
-                <div class="mb-s">
-                    <img src="https://th.bing.com/th/id/OIP.R55ZkSoCRK5wWfbGZ75IjAHaLi?rs=1&pid=ImgDetMain" class="w-[19rem] h-[20rem] object-cover object-top rounded-md" alt="">
+            <div class="hidden lg:block" >
+                <div class="mb-s" *ngFor="let item of category[selectedSection].sections">
+                    <img *ngFor="let section of item.imgUrl" [src]="section.imageUrl" class="w-[19rem] h-[20rem] object-cover object-top rounded-md" alt="">
                 </div>
                 <p class="text-gray-600">New Arival</p>
             </div>
             <div class="hidden lg:block">
-                <div class="mb-s">
-                    <img src="https://i.pinimg.com/736x/da/89/15/da8915e383f15ed39fe72cbb9eb4816c.jpg" class="w-[19rem] h-[20rem] object-cover object-top rounded-md" alt="">
+                <div class="mb-s" *ngFor="let item of category[selectedSection].sections">
+                    <img *ngFor="let section of item.imgUrl1" [src]="section.imageUrl"  class="w-[19rem] h-[20rem] object-cover object-top rounded-md" alt="">
                 </div>
                 <p class="text-gray-600">New Arival</p>
             </div>
